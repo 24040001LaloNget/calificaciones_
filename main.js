@@ -1,32 +1,17 @@
-document.getElementById('btnCalcular').addEventListener('click', async () => {
+document.getElementById('btnCalcular').addEventListener('click', () => {
   const nombre = document.getElementById('nombre').value.trim();
-  const unidad1 = document.getElementById('unidad1').value.trim();
-  const unidad2 = document.getElementById('unidad2').value.trim();
-  const unidad3 = document.getElementById('unidad3').value.trim();
+  const u1 = parseFloat(document.getElementById('unidad1').value);
+  const u2 = parseFloat(document.getElementById('unidad2').value);
+  const u3 = parseFloat(document.getElementById('unidad3').value);
 
-  if (!nombre || !unidad1 || !unidad2 || !unidad3) {
-    alert('Por favor completa todos los campos');
+  if (!nombre || isNaN(u1) || isNaN(u2) || isNaN(u3)) {
+    alert('Completa todos los campos con números válidos');
     return;
   }
 
-  try {
-    const res = await fetch('/calcular-promedio', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre, unidad1, unidad2, unidad3 })
-    });
+  const promedio = (u1 + u2 + u3) / 3;
+  const estatus = promedio >= 6 ? "Aprobado" : "Reprobado";
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      alert(data.error || 'Error al calcular');
-      return;
-    }
-
-    document.getElementById('promedio').value = Number(data.promedio).toFixed(2);
-    document.getElementById('estatus').value = data.estatus;
-  } catch (err) {
-    console.error(err);
-    alert('No se pudo conectar al servidor. ¿Ya lo iniciaste con npm start?');
-  }
+  document.getElementById('promedio').value = promedio.toFixed(2);
+  document.getElementById('estatus').value = estatus;
 });
