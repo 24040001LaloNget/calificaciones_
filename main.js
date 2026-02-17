@@ -1,3 +1,5 @@
+console.log("MAIN.JS NUEVO CARGADO ✅");
+
 document.getElementById('btnCalcular').addEventListener('click', () => {
   const nombre = document.getElementById('nombre').value.trim();
   const u1 = parseFloat(document.getElementById('unidad1').value);
