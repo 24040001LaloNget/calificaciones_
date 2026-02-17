@@ -1,0 +1,16 @@
+{
+  "name": "calificaciones",
+  "version": "1.0.0",
+  "description": "Sistema de cálculo de promedio con Node y Express",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
